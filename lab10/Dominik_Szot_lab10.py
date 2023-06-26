@@ -27,14 +27,13 @@ model = dde.Model(data, net)
 model.compile("adam", lr=0.001)
 losshistory, train_state = model.train(epochs=50000)
 
-# Generate predictions on a grid for visualization
+# Generate predictions on  grid for visualization
 x = np.linspace(0, 1, 50)
 y = np.linspace(0, 1, 50)
 x_grid, y_grid = np.meshgrid(x, y)
 points = np.vstack([x_grid.ravel(), y_grid.ravel(), np.ones_like(x_grid.ravel()), np.ones_like(y_grid.ravel())]).T
 pred = model.predict(points)
 
-# Plot the predicted solution
 fig = plt.figure()
 ax = fig.add_subplot(111, projection='3d')
 ax.scatter(points[:, 0], points[:, 1], pred[:, 0], c=pred[:, 0], cmap='viridis')
