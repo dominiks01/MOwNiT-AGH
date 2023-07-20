@@ -1,2 +1,3 @@
 *.txt
-./ignore_folder
+./ignore_folder/
+./wykłady
